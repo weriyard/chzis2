@@ -14,8 +14,8 @@ class LessonLoader(bulkloader.Loader):
         bulkloader.Loader.__init__(self, 'Lesson',
                                    [('number', lambda x: x.decode('utf-8')),
                                     ('name', lambda x: x.decode('utf-8')),
-                                    ('description', str),
-                                    ('last_modification', lambda x : datetime.now)
+#                                    ('description', str),
+#                                    ('last_modification', lambda x : datetime.now)
                                    ])
 
     # number = ndb.IntegerProperty(required=True)
