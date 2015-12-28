@@ -13,18 +13,16 @@ class LessonLoader(bulkloader.Loader):
     def __init__(self):
         bulkloader.Loader.__init__(self, 'Lesson',
                                    [
-                                    ('number', lambda x: 10),
-                                    ('name', lambda x: x.decode('utf-8')),
-                                    ('reading', lambda x: bool(int(x))),
-                                    ('demo',  lambda x: bool(int(x))),
-                                    ('discourse',  lambda x: bool(int(x)))
-#                                    ('description', str),
-#                                    ('last_modification', lambda x : datetime.now)
+                                       ('number', lambda x: 10),
+                                       ('name', lambda x: x.decode('utf-8')),
+                                       ('reading', lambda x: bool(int(x))),
+                                       ('demo',  lambda x: bool(int(x))),
+                                       ('discourse',  lambda x: bool(int(x)))
+                                       #                                    ('description', str),
+                                       #                                    ('last_modification', lambda x : datetime.now)
                                    ])
+        self.generate_records(filename='./lekcje.csv')
 
-    # number = ndb.IntegerProperty(required=True)
-    # name = ndb.StringProperty(required=True)
-    # description = ndb.StringProperty()
-    # last_modification = ndb.DateProperty(default=datetime.now())
+
 
 loaders = [LessonLoader]
