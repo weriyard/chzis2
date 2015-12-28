@@ -13,7 +13,7 @@ class LessonLoader(bulkloader.Loader):
     def __init__(self):
         bulkloader.Loader.__init__(self, 'Lesson',
                                    [
-#                                       ('number', lambda x: x.decode('utf-8')),
+                                    ('number', lambda x: 10),
                                     ('name', lambda x: x.decode('utf-8')),
                                     ('reading', lambda x: bool(int(x))),
                                     ('demo',  lambda x: bool(int(x))),
