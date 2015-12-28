@@ -11,14 +11,14 @@ class Lesson(db.Model):
     demo = db.BooleanProperty()
     discourse = db.BooleanProperty()
     description = db.StringProperty()
-    last_modification = db.DateTimeProperty(default=datetime.now())
+    last_modification = db.DateTimeProperty(auto_now=True)
 
 
 class Background(db.Model):
     number = db.IntegerProperty(required=True)
     name = db.StringProperty(required=True)
     description = db.StringProperty()
-    last_modification = db.DateTimeProperty(default=datetime.now())
+    last_modification = db.DateTimeProperty(auto_now=True)
 
 class StudentProfile(db.Model):
     person = db.ReferenceProperty(CongregationMember, required=True)
@@ -30,4 +30,4 @@ class StudentProfile(db.Model):
     creation_date = db.DateProperty()
     presentation_date = db.DateProperty()
     topic = db.StringProperty()
-    last_modification = db.DateTimeProperty(default=datetime.now())
+    last_modification = db.DateTimeProperty(auto_now=True)

@@ -15,6 +15,6 @@ class CongregationMember(db.Model):
     reader_only = db.BooleanProperty()
     baptism_date = db.DateProperty()
     age = db.IntegerProperty()
-    last_modification = db.DateProperty(default=datetime.now())
+    last_modification = db.DateTimeProperty(auto_now=True)
 
 

@@ -9,7 +9,7 @@ class User(db.Model):
     password = db.StringProperty()
     email = db.EmailProperty()
     gender = db.StringProperty(choices=['man', 'woman'])
-    last_modification = db.DateProperty(default=datetime.now())
+    last_modification = db.DateTimeProperty(auto_now=True)
 
 
 
