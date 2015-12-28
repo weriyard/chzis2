@@ -1,35 +1,33 @@
-
 from datetime import datetime
-from google.appengine.ext import ndb
 
-from chzis.person.models import Person
-
-
-class Lesson(ndb.Model):
-    number = ndb.IntegerProperty(required=True)
-    name = ndb.StringProperty(required=True)
-    reading = ndb.BooleanProperty()
-    demo = ndb.BooleanProperty()
-    discourse = ndb.BooleanProperty()
-    description = ndb.StringProperty()
-    last_modification = ndb.DateProperty(default=datetime.now())
+from google.appengine.ext import db
+from chzis.congregation.models import CongregationMember
 
 
-class Background(ndb.Model):
-    number = ndb.IntegerProperty(required=True)
-    name = ndb.StringProperty(required=True)
-    description = ndb.StringProperty()
-    last_modification = ndb.DateProperty(default=datetime.now())
+class Lesson(db.Model):
+    number = db.IntegerProperty(required=True)
+    name = db.StringProperty(required=True)
+    reading = db.BooleanProperty()
+    demo = db.BooleanProperty()
+    discourse = db.BooleanProperty()
+    description = db.StringProperty()
+    last_modification = db.DateTimeProperty(default=datetime.now())
 
 
-class PersonSchool(ndb.Model):
-    person = ndb.KeyProperty(Person, required=True)
-    lesson = ndb.KeyProperty(Lesson, required=True)
-    lesson_passed = ndb.BooleanProperty()
-    lesson_comments = ndb.StringProperty()
-    background = ndb.KeyProperty(Background)
-    description = ndb.StringProperty()
-    creation_date = ndb.DateProperty()
-    presentation_date = ndb.DateProperty()
-    topic = ndb.StringProperty()
-    last_modification = ndb.DateProperty(default=datetime.now())
+class Background(db.Model):
+    number = db.IntegerProperty(required=True)
+    name = db.StringProperty(required=True)
+    description = db.StringProperty()
+    last_modification = db.DateTimeProperty(default=datetime.now())
+
+class StudentProfile(db.Model):
+    person = db.ReferenceProperty(CongregationMember, required=True)
+    lesson = db.ReferenceProperty(Lesson, required=True)
+    lesson_passed = db.BooleanProperty()
+    lesson_comments = db.StringProperty()
+    background = db.ReferenceProperty(Background)
+    description = db.StringProperty()
+    creation_date = db.DateProperty()
+    presentation_date = db.DateProperty()
+    topic = db.StringProperty()
+    last_modification = db.DateTimeProperty(default=datetime.now())

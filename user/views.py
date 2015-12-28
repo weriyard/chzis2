@@ -1,7 +1,7 @@
 import webapp2
+
 from chzis import TPL
-from chzis.person.models import Person
-from chzis.school.models import Lesson
+from user.person import Person
 
 
 class PersonList(webapp2.RequestHandler):

@@ -14,12 +14,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-import os, sys
 
 import webapp2
 
-
-from person.views import PersonList
+from user.person.views import PersonList
 
 app = webapp2.WSGIApplication(debug=True)
 app.router.add(('/', PersonList))
