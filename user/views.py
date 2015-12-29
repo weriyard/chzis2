@@ -1,11 +1,15 @@
-import webapp2
 
-from chzis import TPL
-from user.person import Person
+from chzis.req import BaseHandler
+from chzis.user.models import User
 
 
-class PersonList(webapp2.RequestHandler):
+class UserList(BaseHandler):
     def get(self):
-        p = Person()
-        tpl = TPL.get_template('personas.html')
-        self.response.write(tpl.render())
+        users = User.all()
+        print users
+        tpl_var = dict()
+        tpl_var['users'] = users
+
+        self.render_template('users.html', tpl_var)
+
+
